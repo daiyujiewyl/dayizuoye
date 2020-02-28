@@ -27,4 +27,10 @@ public class AddressController {
                        @RequestAttribute Integer customerId){
 
     }
+
+    @PostMapping
+    public void delete(@RequestBody Integer addressId){
+
+    }
+
 }
