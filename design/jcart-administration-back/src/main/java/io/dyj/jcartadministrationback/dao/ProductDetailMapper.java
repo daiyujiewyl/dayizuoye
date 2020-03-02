@@ -2,6 +2,8 @@ package io.dyj.jcartadministrationback.dao;
 
 import io.dyj.jcartadministrationback.po.ProductDetail;
 
+
+
 public interface ProductDetailMapper {
     int deleteByPrimaryKey(Integer productId);
 
