@@ -32,4 +32,9 @@ public class ProductController {
     public void update(@RequestBody ProductUpdateInDTO productUpdateInDTO){
 
     }
+
+    @PostMapping("/delete")
+    public void delete(@RequestBody Integer productId){
+
+    }
 }
