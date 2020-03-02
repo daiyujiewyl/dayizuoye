@@ -1,7 +1,9 @@
 package io.dyj.jcartadministrationback.service;
 
+import com.github.pagehelper.Page;
 import io.dyj.jcartadministrationback.dto.in.ProductCreateInDTO;
 import io.dyj.jcartadministrationback.dto.in.ProductUpdateInDTO;
+import io.dyj.jcartadministrationback.dto.out.ProductListOutDTO;
 
 import java.util.List;
 
@@ -14,4 +16,6 @@ public interface ProductService {
     void delete(Integer productId);
 
     void batchDelete(List<Integer> productIds);
+
+    Page<ProductListOutDTO> search(Integer pageNum);
 }

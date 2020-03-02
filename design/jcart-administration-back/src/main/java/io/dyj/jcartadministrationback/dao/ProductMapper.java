@@ -1,5 +1,7 @@
 package io.dyj.jcartadministrationback.dao;
 
+import com.github.pagehelper.Page;
+import io.dyj.jcartadministrationback.dto.out.ProductListOutDTO;
 import io.dyj.jcartadministrationback.po.Product;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -21,4 +23,6 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
     //custom
     int batchDelete(@Param("productIds")List<Integer> productIds);
+
+    Page<ProductListOutDTO> search();
 }

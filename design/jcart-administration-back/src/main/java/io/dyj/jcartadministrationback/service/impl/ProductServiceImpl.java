@@ -1,10 +1,13 @@
 package io.dyj.jcartadministrationback.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import io.dyj.jcartadministrationback.dao.ProductDetailMapper;
 import io.dyj.jcartadministrationback.dao.ProductMapper;
 import io.dyj.jcartadministrationback.dto.in.ProductCreateInDTO;
 import io.dyj.jcartadministrationback.dto.in.ProductUpdateInDTO;
+import io.dyj.jcartadministrationback.dto.out.ProductListOutDTO;
 import io.dyj.jcartadministrationback.po.Product;
 import io.dyj.jcartadministrationback.po.ProductDetail;
 import io.dyj.jcartadministrationback.service.ProductService;
@@ -96,5 +99,12 @@ public class ProductServiceImpl implements ProductService {
         productMapper.batchDelete(productIds);
         productDetailMapper.batchDelete(productIds);
 
+    }
+
+    @Override
+    public Page<ProductListOutDTO> search(Integer pageNum) {
+        PageHelper.startPage(pageNum,10);
+        Page<ProductListOutDTO> page = productMapper.search();
+        return page;
     }
 }

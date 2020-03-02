@@ -1,5 +1,6 @@
 package io.dyj.jcartadministrationback.controller;
 
+import com.github.pagehelper.Page;
 import io.dyj.jcartadministrationback.dto.in.ProductCreateInDTO;
 import io.dyj.jcartadministrationback.dto.in.ProductSearchInDTO;
 import io.dyj.jcartadministrationback.dto.in.ProductUpdateInDTO;
@@ -21,8 +22,14 @@ public class ProductController {
 
     @GetMapping("/search")
     public PageOutDTO<ProductListOutDTO> search(ProductSearchInDTO productSearchInDTO,
-                                                @RequestParam Integer pageNum){
-        return  null;
+                                                @RequestParam(required = false,defaultValue ="1") Integer pageNum){
+        Page<ProductListOutDTO> page = productService.search(pageNum);
+        PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        pageOutDTO.setList(page);
+        return  pageOutDTO;
     }
 
     @GetMapping("/getById")
