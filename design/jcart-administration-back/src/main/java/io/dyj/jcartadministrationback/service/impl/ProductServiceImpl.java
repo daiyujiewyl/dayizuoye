@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import io.dyj.jcartadministrationback.dao.ProductDetailMapper;
 import io.dyj.jcartadministrationback.dao.ProductMapper;
 import io.dyj.jcartadministrationback.dto.in.ProductCreateInDTO;
+import io.dyj.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.dyj.jcartadministrationback.po.Product;
 import io.dyj.jcartadministrationback.po.ProductDetail;
 import io.dyj.jcartadministrationback.service.ProductService;
@@ -51,5 +52,34 @@ public class ProductServiceImpl implements ProductService {
         productDetailMapper.insertSelective(productDetail);
 
         return productId;
+    }
+
+    @Override
+    @Transactional
+    public void update(ProductUpdateInDTO productUpdateInDTO) {
+        Product product = new Product();
+        product.setProductId(productUpdateInDTO.getProductId());
+        product.setProductName(productUpdateInDTO.getProductName());
+        product.setPrice(productUpdateInDTO.getPrice());
+        product.setDiscount(productUpdateInDTO.getDiscount());
+        product.setStockQuantity(productUpdateInDTO.getStockQuantity());
+        product.setMainPicUrl(productUpdateInDTO.getMainPicUrl());
+        product.setStatus(productUpdateInDTO.getStatus());
+        product.setRewordPoints(productUpdateInDTO.getRewordPoints());
+        product.setSortOrder(productUpdateInDTO.getSortOrder());
+        String description = productUpdateInDTO.getDescription();
+        String productAbstract = description.substring(0, Math.min(100, description.length()));
+        product.setProductAbstract(productAbstract);
+        productMapper.updateByPrimaryKeySelective(product);
+
+
+        ProductDetail productDetail = new ProductDetail();
+        productDetail.setProductId(productUpdateInDTO.getProductId());
+        productDetail.setDescription(productUpdateInDTO.getDescription());
+        List<String> otherPicUrls = productUpdateInDTO.getOtherPicUrls();
+        productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
+        productDetailMapper.updateByPrimaryKeySelective(productDetail);
+
+
     }
 }
