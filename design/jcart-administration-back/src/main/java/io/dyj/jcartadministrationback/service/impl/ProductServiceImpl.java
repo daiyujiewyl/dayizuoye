@@ -82,4 +82,19 @@ public class ProductServiceImpl implements ProductService {
 
 
     }
+
+    @Override
+    @Transactional
+    public void delete(Integer productId) {
+        productMapper.deleteByPrimaryKey(productId);
+        productDetailMapper.deleteByPrimaryKey(productId);
+    }
+
+    @Override
+    @Transactional
+    public void batchDelete(List<Integer> productIds) {
+        productMapper.batchDelete(productIds);
+        productDetailMapper.batchDelete(productIds);
+
+    }
 }
