@@ -111,9 +111,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductShowOutDTO getById(Integer productId) {
-        ProductShowOutDTO productShowOutDTO = new ProductShowOutDTO();
         Product product = productMapper.selectByPrimaryKey(productId);
         ProductDetail productDetail = productDetailMapper.selectByPrimaryKey(productId);
+
+        ProductShowOutDTO productShowOutDTO = new ProductShowOutDTO();
         productShowOutDTO.setProductId(productId);
         productShowOutDTO.setProductCode(product.getProductCode());
         productShowOutDTO.setProductName(product.getProductName());
@@ -124,6 +125,7 @@ public class ProductServiceImpl implements ProductService {
         productShowOutDTO.setRewordPoints(product.getRewordPoints());
         productShowOutDTO.setSortOrder(product.getSortOrder());
         productShowOutDTO.setStockQuantity(product.getStockQuantity());
+        productShowOutDTO.setProductAbstract(product.getProductAbstract());
 
 
         productShowOutDTO.setDescription(productDetail.getDescription());
