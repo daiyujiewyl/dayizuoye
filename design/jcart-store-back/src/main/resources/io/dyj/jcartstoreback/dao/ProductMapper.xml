@@ -167,6 +167,5 @@
     select
     <include refid="Base_Column_List" />
     from jcart_product
-    where status = 1
   </select>
 </mapper>

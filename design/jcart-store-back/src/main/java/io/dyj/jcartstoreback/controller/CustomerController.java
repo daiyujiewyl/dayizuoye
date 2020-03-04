@@ -2,6 +2,7 @@ package io.dyj.jcartstoreback.controller;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import io.dyj.jcartstoreback.constant.ClientExceptionConstant;
+
 import io.dyj.jcartstoreback.dto.in.*;
 import io.dyj.jcartstoreback.dto.out.CustomerGetProfileOutDTO;
 import io.dyj.jcartstoreback.dto.out.CustomerLoginOutDTO;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/customer")
 @CrossOrigin
 public class CustomerController {
+
     @Autowired
     private CustomerService customerService;
 
@@ -24,7 +26,6 @@ public class CustomerController {
 
     @PostMapping("/register")
     public Integer register(@RequestBody CustomerRegisterInDTO customerRegisterInDTO){
-
         Integer customerId = customerService.register(customerRegisterInDTO);
         return customerId;
     }
@@ -54,6 +55,7 @@ public class CustomerController {
     @PostMapping("/updateProfile")
     public void updateProfile(@RequestBody CustomerUpdateProfileInDTO customerUpdateProfileInDTO,
                               @RequestAttribute Integer customerId){
+
     }
 
     @PostMapping("/changePwd")
@@ -71,4 +73,7 @@ public class CustomerController {
     public void resetPwd(@RequestBody CustomerResetPwdInDTO customerResetPwdInDTO){
 
     }
+
+
+
 }
