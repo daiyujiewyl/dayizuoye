@@ -7,8 +7,8 @@ import io.dyj.jcartstoreback.po.Customer;
 
 public interface CustomerService {
 
-    Integer register(CustomerRegisterInDTO customerRegisterInDTO);
+  /*  Integer register(CustomerRegisterInDTO customerRegisterInDTO);
 
-    Customer getByUsername(String username);
+    Customer getByUsername(String username);*/
 
 }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class CustomerController {
 
-    @Autowired
+   /* @Autowired
     private CustomerService customerService;
 
     @Autowired
@@ -45,7 +45,7 @@ public class CustomerController {
         }else {
             throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRMSG);
         }
-    }
+    }*/
 
     @GetMapping("/getProfile")
     public CustomerGetProfileOutDTO getProfile(@RequestAttribute Integer customerId){

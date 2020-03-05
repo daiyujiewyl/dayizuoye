@@ -1,7 +1,7 @@
 package io.dyj.jcartstoreback.enumeration;
 
 public enum CustomerStatus {
-    Disable,
+    /*Disable,
     Enable,
-    Unsafe
+    Unsafe*/
 }

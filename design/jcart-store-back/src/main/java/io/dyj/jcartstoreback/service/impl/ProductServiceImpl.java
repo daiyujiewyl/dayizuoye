@@ -25,22 +25,27 @@ public class ProductServiceImpl implements ProductService {
     private ProductDetailMapper productDetailMapper;
 
     @Override
-    public ProductShowOutDTO getById(Integer productId) {
+    public Product getById(Integer productId) {
+        Product product = productMapper.selectByPrimaryKey(productId);
+        return product;
+    }
+
+    @Override
+    public ProductShowOutDTO getShowById(Integer productId) {
+
         Product product = productMapper.selectByPrimaryKey(productId);
         ProductDetail productDetail = productDetailMapper.selectByPrimaryKey(productId);
 
         ProductShowOutDTO productShowOutDTO = new ProductShowOutDTO();
-        productShowOutDTO.setProductId(productId);
+        productShowOutDTO.setProductId(product.getProductId());
         productShowOutDTO.setProductCode(product.getProductCode());
         productShowOutDTO.setProductName(product.getProductName());
         productShowOutDTO.setPrice(product.getPrice());
         productShowOutDTO.setDiscount(product.getDiscount());
-        productShowOutDTO.setStatus(product.getStatus());
         productShowOutDTO.setMainPicUrl(product.getMainPicUrl());
         productShowOutDTO.setRewordPoints(product.getRewordPoints());
-        productShowOutDTO.setSortOrder(product.getSortOrder());
         productShowOutDTO.setStockQuantity(product.getStockQuantity());
-        productShowOutDTO.setProductAbstract(product.getProductAbstract());
+
         productShowOutDTO.setDescription(productDetail.getDescription());
         String otherPicUrlsJson = productDetail.getOtherPicUrls();
         List<String> otherPicUrls = JSON.parseArray(otherPicUrlsJson, String.class);
