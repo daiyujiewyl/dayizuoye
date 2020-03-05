@@ -14,7 +14,7 @@ import java.util.Date;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-   /* @Autowired
+    @Autowired
     private CustomerMapper customerMapper;
 
     @Override
@@ -46,5 +46,5 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer getByUsername(String username) {
         Customer customer = customerMapper.selectByUsername(username);
         return customer;
-    }*/
+    }
 }

@@ -11,4 +11,5 @@ public interface ProductService {
     ProductShowOutDTO getShowById(Integer productId);
 
     Page<ProductListOutDTO> search(Integer pageNum);
+
 }

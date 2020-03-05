@@ -9,37 +9,10 @@ public class ProductShowOutDTO {
     private Double price;
     private Double discount;
     private Integer stockQuantity;
-    private Byte status;
     private String mainPicUrl;
     private Integer rewordPoints;
-    private Integer sortOrder;
-    /*private String productAbstract;*/
     private String description;
     private List<String> otherPicUrls;
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
-
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
-    }
-
-    /*public String getProductAbstract() {
-        return productAbstract;
-    }
-
-    public void setProductAbstract(String productAbstract) {
-        this.productAbstract = productAbstract;
-    }*/
 
     public Integer getProductId() {
         return productId;
