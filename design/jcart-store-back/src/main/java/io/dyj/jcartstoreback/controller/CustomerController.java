@@ -31,23 +31,7 @@ public class CustomerController {
 
     }
 
-    @GetMapping("/login")
-    public CustomerLoginOutDTO login(CustomerLoginInDTO customerLoginInDTO) throws ClientException {
-        Customer customer = customerService.getByUsername(customerLoginInDTO.getUsername());
-        if (customer == null){
-            throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRMSG);
-        }
-        String encPwdDB = customer.getEncryptedPassword();
-        BCrypt.Result result = BCrypt.verifyer().verify(customerLoginInDTO.getPassword().toCharArray(), encPwdDB);
 
-        if (result.verified) {
-            CustomerLoginOutDTO customerLoginOutDTO = jwtUtil.issueToken(customer);
-            return customerLoginOutDTO;
-        }else {
-            throw new ClientException(ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRCODE, ClientExceptionConstant.ADNINISTRATOR_PASSWORD_INVALID_ERRMSG);
-        }
-
-    }
 
     @GetMapping("/getProfile")
     public CustomerGetProfileOutDTO getProfile(@RequestAttribute Integer customerId){

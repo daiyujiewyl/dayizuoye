@@ -14,7 +14,7 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+   /* private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${jwt.valid.duration}")
     private Long jwtValidDuration;
@@ -65,5 +65,5 @@ public class JWTUtil {
 //        administratorLoginVO.setAdministratorId(jwt.getClaim("administratorId").asInt());
 //        administratorLoginVO.setUsername(jwt.getSubject());
 //        return administratorLoginVO;
-//    }
+//    }*/
 }

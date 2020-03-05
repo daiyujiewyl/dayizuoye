@@ -10,5 +10,4 @@ public interface CustomerService {
     Integer register(CustomerRegisterInDTO customerRegisterInDTO);
 
     Customer getByUsername(String username);
-
 }
