@@ -26,11 +26,10 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDetailMapper productDetailMapper;
 
-
-
     @Override
     @Transactional
     public Integer create(ProductCreateInDTO productCreateInDTO) {
+
         Product product = new Product();
         product.setProductCode(productCreateInDTO.getProductCode());
         product.setProductName(productCreateInDTO.getProductName());
@@ -52,12 +51,14 @@ public class ProductServiceImpl implements ProductService {
         productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
         productDetailMapper.insertSelective(productDetail);
 
+
         return productId;
     }
 
     @Override
     @Transactional
     public void update(ProductUpdateInDTO productUpdateInDTO) {
+
         Product product = new Product();
         product.setProductId(productUpdateInDTO.getProductId());
         product.setProductName(productUpdateInDTO.getProductName());
@@ -71,14 +72,12 @@ public class ProductServiceImpl implements ProductService {
         product.setProductAbstract(productUpdateInDTO.getProductAbstract());
         productMapper.updateByPrimaryKeySelective(product);
 
-
         ProductDetail productDetail = new ProductDetail();
         productDetail.setProductId(productUpdateInDTO.getProductId());
         productDetail.setDescription(productUpdateInDTO.getDescription());
         List<String> otherPicUrls = productUpdateInDTO.getOtherPicUrls();
         productDetail.setOtherPicUrls(JSON.toJSONString(otherPicUrls));
         productDetailMapper.updateByPrimaryKeySelective(productDetail);
-
 
     }
 
@@ -94,12 +93,11 @@ public class ProductServiceImpl implements ProductService {
     public void batchDelete(List<Integer> productIds) {
         productMapper.batchDelete(productIds);
         productDetailMapper.batchDelete(productIds);
-
     }
 
     @Override
     public Page<ProductListOutDTO> search(Integer pageNum) {
-        PageHelper.startPage(pageNum,10);
+        PageHelper.startPage(pageNum, 10);
         Page<ProductListOutDTO> page = productMapper.search();
         return page;
     }
@@ -121,6 +119,7 @@ public class ProductServiceImpl implements ProductService {
         productShowOutDTO.setSortOrder(product.getSortOrder());
         productShowOutDTO.setStockQuantity(product.getStockQuantity());
         productShowOutDTO.setProductAbstract(product.getProductAbstract());
+
         productShowOutDTO.setDescription(productDetail.getDescription());
         String otherPicUrlsJson = productDetail.getOtherPicUrls();
         List<String> otherPicUrls = JSON.parseArray(otherPicUrlsJson, String.class);

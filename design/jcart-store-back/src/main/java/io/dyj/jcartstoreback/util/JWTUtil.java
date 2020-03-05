@@ -14,7 +14,7 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
-   /* private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${jwt.valid.duration}")
     private Long jwtValidDuration;
@@ -29,7 +29,7 @@ public class JWTUtil {
         algorithm = Algorithm.HMAC256(jwtHS256Secret);
     }
 
-    public CustomerLoginOutDTO issueToken(Customer customer) {
+  /*  public CustomerLoginOutDTO issueToken(Customer customer) {
         Date now = new Date();
         long nowTimestamp = now.getTime();
         long expireTimestamp = nowTimestamp + jwtValidDuration;
@@ -52,7 +52,7 @@ public class JWTUtil {
         customerLoginOutDTO.setExpireTimestamp(expireTimestamp);
 
         return customerLoginOutDTO;
-    }
+    }*/
 
 //    public AdministratorLoginVO verifyToken(String token) {
 //        JWTVerifier verifier = JWT.require(algorithm)
@@ -65,5 +65,5 @@ public class JWTUtil {
 //        administratorLoginVO.setAdministratorId(jwt.getClaim("administratorId").asInt());
 //        administratorLoginVO.setUsername(jwt.getSubject());
 //        return administratorLoginVO;
-//    }*/
+//    }
 }
