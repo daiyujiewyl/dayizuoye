@@ -2,8 +2,12 @@ package io.dyj.jcartstoreback.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.auth0.jwt.interfaces.JWTVerifier;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import io.dyj.jcartstoreback.dto.out.CustomerLoginOutDTO;
 import io.dyj.jcartstoreback.po.Customer;
+import io.dyj.jcartstoreback.vo.CustomerLoginVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +18,7 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
-    /*private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${jwt.valid.duration}")
     private Long jwtValidDuration;
@@ -27,9 +31,9 @@ public class JWTUtil {
     public JWTUtil(@Value("${jwt.HS256.secret}") String jwtHS256Secret) {
         logger.info("init jwt util");
         algorithm = Algorithm.HMAC256(jwtHS256Secret);
-    }*/
+    }
 
-  /*  public CustomerLoginOutDTO issueToken(Customer customer) {
+    public CustomerLoginOutDTO issueToken(Customer customer) {
         Date now = new Date();
         long nowTimestamp = now.getTime();
         long expireTimestamp = nowTimestamp + jwtValidDuration;
@@ -52,18 +56,19 @@ public class JWTUtil {
         customerLoginOutDTO.setExpireTimestamp(expireTimestamp);
 
         return customerLoginOutDTO;
-    }*/
+    }
 
-//    public AdministratorLoginVO verifyToken(String token) {
-//        JWTVerifier verifier = JWT.require(algorithm)
-//                .withIssuer(issuer)
-//                .build();
-//        DecodedJWT jwt;
-//        jwt = verifier.verify(token);
-//
-//        AdministratorLoginVO administratorLoginVO = new AdministratorLoginVO();
-//        administratorLoginVO.setAdministratorId(jwt.getClaim("administratorId").asInt());
-//        administratorLoginVO.setUsername(jwt.getSubject());
-//        return administratorLoginVO;
-//    }
+    public CustomerLoginVO verifyToken(String token) {
+        JWTVerifier verifier = JWT.require(algorithm)
+                .withIssuer(issuer)
+                .build();
+        DecodedJWT jwt;
+        jwt = verifier.verify(token);
+
+        CustomerLoginVO customerLoginVO = new CustomerLoginVO();
+        customerLoginVO.setCustomerId(jwt.getClaim("customerId").asInt());
+        customerLoginVO.setUsername(jwt.getSubject());
+        return customerLoginVO;
+    }
+
 }

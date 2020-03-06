@@ -21,8 +21,8 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-   /* @Autowired
-    private JWTUtil jwtUtil;*/
+    @Autowired
+    private JWTUtil jwtUtil;
 
     @PostMapping("/register")
     public Integer register(@RequestBody CustomerRegisterInDTO customerRegisterInDTO){
@@ -31,6 +31,22 @@ public class CustomerController {
 
     }
 
+    @GetMapping("/login")
+    public CustomerLoginOutDTO login(CustomerLoginInDTO customerLoginInDTO) throws ClientException {
+        Customer customer = customerService.getByUsername(customerLoginInDTO.getUsername());
+        if (customer == null){
+            throw new ClientException(ClientExceptionConstant.CUSTOMER_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.CUSTOMER_USERNAME_NOT_EXIST_ERRMSG);
+        }
+        String encPwdDB = customer.getEncryptedPassword();
+        BCrypt.Result result = BCrypt.verifyer().verify(customerLoginInDTO.getPassword().toCharArray(), encPwdDB);
+
+        if (result.verified) {
+            CustomerLoginOutDTO customerLoginOutDTO = jwtUtil.issueToken(customer);
+            return customerLoginOutDTO;
+        }else {
+            throw new ClientException(ClientExceptionConstant.CUSTOMER_PASSWORD_INVALID_ERRCODE, ClientExceptionConstant.CUSTOMER_PASSWORD_INVALID_ERRMSG);
+        }
+    }
 
 
     @GetMapping("/getProfile")
