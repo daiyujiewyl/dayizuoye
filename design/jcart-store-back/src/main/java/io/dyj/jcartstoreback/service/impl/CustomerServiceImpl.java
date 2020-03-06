@@ -41,9 +41,9 @@ public class CustomerServiceImpl implements CustomerService {
         return customerId;
     }
 
-   /* @Override
+    @Override
     public Customer getByUsername(String username) {
         Customer customer = customerMapper.selectByUsername(username);
         return customer;
-    }*/
+    }
 }

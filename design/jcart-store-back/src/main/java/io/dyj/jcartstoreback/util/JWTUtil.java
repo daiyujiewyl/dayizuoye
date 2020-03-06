@@ -14,7 +14,7 @@ import java.util.Date;
 @Component
 public class JWTUtil {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    /*private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${jwt.valid.duration}")
     private Long jwtValidDuration;
@@ -27,7 +27,7 @@ public class JWTUtil {
     public JWTUtil(@Value("${jwt.HS256.secret}") String jwtHS256Secret) {
         logger.info("init jwt util");
         algorithm = Algorithm.HMAC256(jwtHS256Secret);
-    }
+    }*/
 
   /*  public CustomerLoginOutDTO issueToken(Customer customer) {
         Date now = new Date();

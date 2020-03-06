@@ -21,8 +21,8 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @Autowired
-    private JWTUtil jwtUtil;
+   /* @Autowired
+    private JWTUtil jwtUtil;*/
 
     @PostMapping("/register")
     public Integer register(@RequestBody CustomerRegisterInDTO customerRegisterInDTO){
