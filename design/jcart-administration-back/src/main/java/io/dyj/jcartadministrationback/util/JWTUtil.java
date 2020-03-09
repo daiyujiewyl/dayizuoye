@@ -10,6 +10,7 @@ import io.dyj.jcartadministrationback.po.Administrator;
 import io.dyj.jcartadministrationback.dto.out.AdministratorLoginOutDTO;
 import io.dyj.jcartadministrationback.po.Administrator;
 
+import io.dyj.jcartadministrationback.vo.AdministratorLoginVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -60,7 +61,7 @@ public class JWTUtil {
         return administratorLoginOutDTO;
     }
 
-   /* public AdministratorLoginVO verifyToken(String token) {
+    public AdministratorLoginVO verifyToken(String token) {
         JWTVerifier verifier = JWT.require(algorithm)
                 .withIssuer(issuer)
                 .build();
@@ -71,5 +72,5 @@ public class JWTUtil {
         administratorLoginVO.setAdministratorId(jwt.getClaim("administratorId").asInt());
         administratorLoginVO.setUsername(jwt.getSubject());
         return administratorLoginVO;
-    }*/
+    }
 }
