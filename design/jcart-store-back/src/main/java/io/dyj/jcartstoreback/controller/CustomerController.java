@@ -66,12 +66,12 @@ public class CustomerController {
     @PostMapping("/updateProfile")
     public void updateProfile(@RequestBody CustomerUpdateProfileInDTO customerUpdateProfileInDTO,
                               @RequestAttribute Integer customerId){
-        /*Customer customer = new Customer();
+        Customer customer = new Customer();
         customer.setCustomerId(customerId);
         customer.setRealName(customerUpdateProfileInDTO.getRealName());
         customer.setMobile(customerUpdateProfileInDTO.getMobile());
         customer.setEmail(customerUpdateProfileInDTO.getEmail());
-        customerService*/
+        customerService.update(customer);
 
     }
 
