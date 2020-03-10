@@ -134,6 +134,7 @@
     where administrator_id in
     <foreach item="item" index="index" collection="administratorIds"
             open="(" separator="," close=")">
+    #{item}
     </foreach>
   </delete>
 
