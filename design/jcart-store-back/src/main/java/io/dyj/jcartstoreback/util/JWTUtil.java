@@ -1,9 +1,12 @@
 package io.dyj.jcartstoreback.util;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import io.dyj.jcartstoreback.dto.out.CustomerLoginOutDTO;
 import io.dyj.jcartstoreback.po.Customer;
+import io.dyj.jcartstoreback.vo.CustomerLoginVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,7 +57,7 @@ public class JWTUtil {
         return customerLoginOutDTO;
     }
 
-   /* public CustomerLoginVO verifyToken(String token) {
+    public CustomerLoginVO verifyToken(String token) {
         JWTVerifier verifier = JWT.require(algorithm)
                 .withIssuer(issuer)
                 .build();
@@ -65,6 +68,6 @@ public class JWTUtil {
         customerLoginVO.setCustomerId(jwt.getClaim("customerId").asInt());
         customerLoginVO.setUsername(jwt.getSubject());
         return customerLoginVO;
-    }*/
+    }
 
 }

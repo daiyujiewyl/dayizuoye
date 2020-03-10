@@ -2,41 +2,39 @@ package io.dyj.jcartstoreback.filter;
 
 import io.dyj.jcartstoreback.constant.ClientExceptionConstant;
 import io.dyj.jcartstoreback.exception.ClientException;
+import io.dyj.jcartstoreback.constant.ClientExceptionConstant;
+import io.dyj.jcartstoreback.exception.ClientException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Set;
 
 @Order(1)
 @Component
-public class StaticResourceFilter {
+public class StaticResourceFilter implements Filter {
 
-    private Logger logger=LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Value("$static.resource.extensions")
+    @Value("${static.resource.extensions}")
     private Set<String> extensions;
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)throws IOException, ServletException {
-
-        HttpServletRequest request=(HttpServletRequest)servletRequest;
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
         final String method = request.getMethod();
         final String requestURI = request.getRequestURI();
-        logger.info("mothod request uri:{}{}",method,request);
+        logger.info("method request uri: {} {}", method, requestURI);
 
         final String[] strings = requestURI.split("\\.");
-        String ext=strings[strings.length-1];
+        String ext = strings[strings.length - 1];
         ext = ext.toLowerCase();
-        if(extensions.contains(ext)){
+        if (extensions.contains(ext)){
             throw new ClientException(ClientExceptionConstant.NOT_SUPPORT_STATIC_RESOURCE_ERRCODE,ClientExceptionConstant.NOT_SUPPORT_STATIC_RESOURCE_ERRMSG);
         }else {
             filterChain.doFilter(servletRequest, servletResponse);

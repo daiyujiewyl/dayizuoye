@@ -5,6 +5,10 @@ import io.dyj.jcartstoreback.constant.ClientExceptionConstant;
 import io.dyj.jcartstoreback.exception.ClientException;
 import io.dyj.jcartstoreback.util.JWTUtil;
 import io.dyj.jcartstoreback.vo.CustomerLoginVO;
+import io.dyj.jcartstoreback.constant.ClientExceptionConstant;
+import io.dyj.jcartstoreback.exception.ClientException;
+import io.dyj.jcartstoreback.util.JWTUtil;
+import io.dyj.jcartstoreback.vo.CustomerLoginVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +16,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Set;
-import java.util.logging.Filter;
-import java.util.logging.LogRecord;
 
 @Order(2)
 @Component
