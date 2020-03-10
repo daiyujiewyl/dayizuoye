@@ -4,8 +4,17 @@ public class AdministratorListOutDTO {
 
     private Integer administratorId;
     private String username;
+    private String realName;
     private Byte status;
-    private Long createTimeStamp;
+    private Long createTimestamp;
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
 
     public Integer getAdministratorId() {
         return administratorId;
@@ -31,11 +40,11 @@ public class AdministratorListOutDTO {
         this.status = status;
     }
 
-    public Long getCreateTimeStamp() {
-        return createTimeStamp;
+    public Long getCreateTimestamp() {
+        return createTimestamp;
     }
 
-    public void setCreateTimeStamp(Long createTimeStamp) {
-        this.createTimeStamp = createTimeStamp;
+    public void setCreateTimestamp(Long createTimestamp) {
+        this.createTimestamp = createTimestamp;
     }
 }
