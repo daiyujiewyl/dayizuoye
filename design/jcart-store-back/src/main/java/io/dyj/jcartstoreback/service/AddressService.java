@@ -12,4 +12,9 @@ public interface AddressService {
 
     Integer create(Address address);
 
+    void update(Address address);
+
+    void delete(Integer addressId);
+
+
 }
