@@ -2,7 +2,6 @@ package io.dyj.jcartstoreback.controller;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import io.dyj.jcartstoreback.constant.ClientExceptionConstant;
-
 import io.dyj.jcartstoreback.dto.in.*;
 import io.dyj.jcartstoreback.dto.out.CustomerGetProfileOutDTO;
 import io.dyj.jcartstoreback.dto.out.CustomerLoginOutDTO;
@@ -11,15 +10,7 @@ import io.dyj.jcartstoreback.po.Customer;
 import io.dyj.jcartstoreback.service.CustomerService;
 import io.dyj.jcartstoreback.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
-
-import javax.xml.bind.DatatypeConverter;
-import java.security.SecureRandom;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping("/customer")
@@ -32,17 +23,17 @@ public class CustomerController {
     @Autowired
     private JWTUtil jwtUtil;
 
-    @Autowired
+  /*  @Autowired
     private SecureRandom secureRandom;
 
-    @Autowired(required = true)
+    @Autowired
     private JavaMailSender mailSender;
 
 
     @Value("${spring.mail.username}")
     private String fromEmail;
 
-    private HashMap<String, String> emailPwdResetCodeMap = new HashMap();
+    private HashMap<String, String> emailPwdResetCodeMap = new HashMap();*/
 
     @PostMapping("/register")
     public Integer register(@RequestBody CustomerRegisterInDTO customerRegisterInDTO){
@@ -112,7 +103,7 @@ public class CustomerController {
 
     @GetMapping("/getPwdResetCode")
     public void getPwdResetCode(@RequestParam String email) throws ClientException {
-        Customer customer = customerService.getByEmail(email);
+        /*Customer customer = customerService.getByEmail(email);
         if (customer == null){
             throw new ClientException(ClientExceptionConstant.CUSTOMER_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.CUSTOMER_USERNAME_NOT_EXIST_ERRMSG);
         }
@@ -124,7 +115,7 @@ public class CustomerController {
         message.setSubject("jcart重置密码");
         message.setText(hex);
         mailSender.send(message);
-        emailPwdResetCodeMap.put("PwdResetCode"+email, hex);
+        emailPwdResetCodeMap.put("PwdResetCode"+email, hex);*/
     }
 
     @PostMapping("/resetPwd")
