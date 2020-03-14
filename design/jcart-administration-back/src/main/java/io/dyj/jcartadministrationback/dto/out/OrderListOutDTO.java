@@ -1,15 +1,37 @@
 package io.dyj.jcartadministrationback.dto.out;
 
+import java.util.Date;
+
 public class OrderListOutDTO {
 
     private Long orderId;
     private Integer customerId;
     private String customerName;
     private Byte status;
-    private Double totalPirce;
+    private Double totalPrice;
+    private Date createTime;
     private Long createTimestamp;
+    private Date updateTime;
     private Long updateTimestamp;
 
+
+    public Date getCreateTime() {
+        if (createTime != null) return (Date) createTime.clone();
+        return null;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime == null ? null : (Date) createTime.clone();
+    }
+
+    public Date getUpdateTime() {
+        if (updateTime != null) return (Date) updateTime.clone();
+        return null;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime == null ? null : (Date) updateTime.clone();
+    }
 
     public Long getOrderId() {
         return orderId;
@@ -43,12 +65,12 @@ public class OrderListOutDTO {
         this.status = status;
     }
 
-    public Double getTotalPirce() {
-        return totalPirce;
+    public Double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotalPirce(Double totalPirce) {
-        this.totalPirce = totalPirce;
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Long getCreateTimestamp() {
