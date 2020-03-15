@@ -22,4 +22,5 @@ public interface AddressMapper {
     //    custom
 
     List<Address> selectByCustomerId(@Param("customerId") Integer customerId);
+
 }
