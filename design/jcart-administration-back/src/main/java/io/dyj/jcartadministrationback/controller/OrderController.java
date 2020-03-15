@@ -15,21 +15,25 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+
     @GetMapping("/search")
     public PageOutDTO<OrderListOutDTO> search(OrderSearchInDTO orderSearchInDTO,
-                              @RequestParam(required = false,defaultValue = "1") Integer pageNum){
-        Page<OrderListOutDTO> page = orderService.search(pageNum);
+                                              @RequestParam(required = false, defaultValue = "1") Integer pageNum) {
+        Page<OrderListOutDTO> page = orderService.search(orderSearchInDTO, pageNum);
+
         PageOutDTO<OrderListOutDTO> pageOutDTO = new PageOutDTO<>();
         pageOutDTO.setTotal(page.getTotal());
-        pageOutDTO.setPageNum(page.getPageNum());
         pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
         pageOutDTO.setList(page);
+
         return pageOutDTO;
     }
 
     @GetMapping("/getById")
-    public OrderShowOutDTO getById(@RequestParam Long orderId){
-        return null;
+    public OrderShowOutDTO getById(@RequestParam Long orderId) {
+        OrderShowOutDTO orderShowOutDTO = orderService.getById(orderId);
+        return orderShowOutDTO;
     }
 
     @GetMapping("/getInvoice")
