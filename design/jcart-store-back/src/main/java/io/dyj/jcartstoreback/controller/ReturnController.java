@@ -3,10 +3,13 @@ package io.dyj.jcartstoreback.controller;
 import com.github.pagehelper.Page;
 import io.dyj.jcartstoreback.dto.in.ReturnApplyInDTO;
 import io.dyj.jcartstoreback.dto.out.PageOutDTO;
+import io.dyj.jcartstoreback.dto.out.ReturnHistoryListOutDTO;
 import io.dyj.jcartstoreback.dto.out.ReturnListOutDTO;
 import io.dyj.jcartstoreback.dto.out.ReturnShowOutDTO;
 import io.dyj.jcartstoreback.enumeration.ReturnStatus;
 import io.dyj.jcartstoreback.po.Return;
+import io.dyj.jcartstoreback.po.ReturnHistory;
+import io.dyj.jcartstoreback.service.ReturnHistoryService;
 import io.dyj.jcartstoreback.service.ReturnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +25,10 @@ public class ReturnController {
 
     @Autowired
     private ReturnService returnService;
+
+
+    @Autowired
+    private ReturnHistoryService returnHistoryService;
 
 
 
@@ -98,7 +105,15 @@ public class ReturnController {
         returnShowOutDTO.setCreateTimestamp(aReturn.getCreateTime().getTime());
         returnShowOutDTO.setUpdateTimestamp(aReturn.getUpdateTime().getTime());
 
-
+        List<ReturnHistory> returnHistories = returnHistoryService.getByReturnId(returnId);
+        List<ReturnHistoryListOutDTO> returnHistoryListOutDTOS = returnHistories.stream().map(returnHistory -> {
+            ReturnHistoryListOutDTO returnHistoryListOutDTO = new ReturnHistoryListOutDTO();
+            returnHistoryListOutDTO.setTimestamp(returnHistory.getTime().getTime());
+            returnHistoryListOutDTO.setReturnStatus(returnHistory.getReturnStatus());
+            returnHistoryListOutDTO.setComment(returnHistory.getComment());
+            return returnHistoryListOutDTO;
+        }).collect(Collectors.toList());
+        returnShowOutDTO.setReturnHistories(returnHistoryListOutDTOS);
 
         return returnShowOutDTO;
     }
