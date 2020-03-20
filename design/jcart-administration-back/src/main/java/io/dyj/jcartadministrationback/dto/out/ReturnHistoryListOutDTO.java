@@ -3,19 +3,11 @@ package io.dyj.jcartadministrationback.dto.out;
 
 public class ReturnHistoryListOutDTO {
 
-    private Integer returnHistoryId;
+    private Long returnHistoryId;
     private Long timestamp;
-    private Byte status;
+    private Byte returnStatus;
     private String comment;
     private Boolean customerNotified;
-
-    public Integer getReturnHistoryId() {
-        return returnHistoryId;
-    }
-
-    public void setReturnHistoryId(Integer returnHistoryId) {
-        this.returnHistoryId = returnHistoryId;
-    }
 
     public Long getTimestamp() {
         return timestamp;
@@ -25,12 +17,12 @@ public class ReturnHistoryListOutDTO {
         this.timestamp = timestamp;
     }
 
-    public Byte getStatus() {
-        return status;
+    public Byte getReturnStatus() {
+        return returnStatus;
     }
 
-    public void setStatus(Byte status) {
-        this.status = status;
+    public void setReturnStatus(Byte returnStatus) {
+        this.returnStatus = returnStatus;
     }
 
     public String getComment() {
@@ -47,5 +39,13 @@ public class ReturnHistoryListOutDTO {
 
     public void setCustomerNotified(Boolean customerNotified) {
         this.customerNotified = customerNotified;
+    }
+
+    public Long getReturnHistoryId() {
+        return returnHistoryId;
+    }
+
+    public void setReturnHistoryId(Long returnHistoryId) {
+        this.returnHistoryId = returnHistoryId;
     }
 }
