@@ -1,22 +1,13 @@
 package io.dyj.jcartadministrationback.dto.out;
 
-public class ReturnShowOutDTO {
-
+public class ReturnListOutDTO {
     private Integer returnId;
     private Long orderId;
-    private Long orderTimestamp;
     private Integer customerId;
     private String customerName;
-    private String mobile;
-    private String email;
-    private Byte status;
-    private Byte action;
     private String productCode;
     private String productName;
-    private Integer quantity;
-    private Byte reason;
-    private Boolean opened;
-    private String comment;
+    private Byte status;
     private Long createTimestamp;
     private Long updateTimestamp;
 
@@ -36,14 +27,6 @@ public class ReturnShowOutDTO {
         this.orderId = orderId;
     }
 
-    public Long getOrderTimestamp() {
-        return orderTimestamp;
-    }
-
-    public void setOrderTimestamp(Long orderTimestamp) {
-        this.orderTimestamp = orderTimestamp;
-    }
-
     public Integer getCustomerId() {
         return customerId;
     }
@@ -58,38 +41,6 @@ public class ReturnShowOutDTO {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public Byte getAction() {
-        return action;
-    }
-
-    public void setAction(Byte action) {
-        this.action = action;
     }
 
     public String getProductCode() {
@@ -108,36 +59,12 @@ public class ReturnShowOutDTO {
         this.productName = productName;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Byte getStatus() {
+        return status;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Byte getReason() {
-        return reason;
-    }
-
-    public void setReason(Byte reason) {
-        this.reason = reason;
-    }
-
-    public Boolean getOpened() {
-        return opened;
-    }
-
-    public void setOpened(Boolean opened) {
-        this.opened = opened;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
     public Long getCreateTimestamp() {
@@ -155,4 +82,5 @@ public class ReturnShowOutDTO {
     public void setUpdateTimestamp(Long updateTimestamp) {
         this.updateTimestamp = updateTimestamp;
     }
+
 }
