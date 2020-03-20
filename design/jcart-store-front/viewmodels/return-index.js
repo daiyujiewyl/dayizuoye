@@ -20,19 +20,19 @@ var app = new Vue({
             console.log('page changed', val);
             this.pageNum = val;
         },
-        getMyReturn() {
-            axios.get('/return/getList', {
-                params: {
-                    pageNum: this.pageNum
-                }
-            })
-                .then(function (response) {
-                    console.log(response);
-                    app.pageInfo = response.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
+          getMyReturn(){
+              axios.get('/return/getList',{
+                  params:{
+                      pageNum: this.pageNum
+                  }
+              })
+              .then(function (response){
+                  console.log(response);
+                  app.pageInfo=response.data;
+              })
+              .catch(function(error){
+                     console.log(error);
+              });
+          }
     }
 })
